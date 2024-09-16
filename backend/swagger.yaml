@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: SmartMint Protocol Compiler
+  description: _This compiler assists with the compilation of smartcontract source code_
+  version: 0.1.0
+
+  
+
+servers:
+  - url: http://localhost:3000/v1
+    description: Localhost Server
+  - url: https://badger-backend.onrender.com/v1/
+    description: Render Server, for development purposes
+
+
+
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
+paths:
+  /api/contract/compile:
+    post:
+      summary: Compile Smart Contract Source Code
+      tags:
+        - Contract
+          - Compilation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  format: text
+                contract:
+                  type: string
+                  format: text
+              required:
+                - name
+                - contract
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    description: Success message
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+  /api/contract/verify:
+    post:
+      summary: verify a users contract
+      tags:
+        - Contract
+          - Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                contractAddress:
+                  type: string
+                contractSourceCode:
+                  type: string
+                contractName:
+                  type: string
+                contractArguments:
+                  type: string[]
+              required:
+                - contractAddress
+                - contractSourceCode
+                - contractName
+                - contractArguments
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    description: Success message
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
