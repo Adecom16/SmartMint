@@ -1,6 +1,6 @@
 "use client";
 
-import { Gluten } from "next/font/google";
+// import { Gluten } from "next/font/google";
 import Image from "next/image";
 import { FC } from "react";
 
@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import heroImg from "../../../public/images/caeser.svg";
 import Link from "next/link";
 
-export const gluten = Gluten({ subsets: ["latin"] });
+// export const gluten = Gluten({ subsets: ["latin"] });
 
 export const HomeSection: FC = () => {
   return (

@@ -1,11 +1,11 @@
 "use client";
 
-import { Gluten } from "next/font/google";
+// import { Gluten } from "next/font/google";
 import Link from "next/link";
 
 import ConnectButton from "@/hooks/useConnectButton";
 
-export const gluten = Gluten({ subsets: ["latin"] });
+// export const gluten = Gluten({ subsets: ["latin"] });
 
 export const NavBar = (props: { isDashboard?: boolean }) => {
   const { isDashboard } = props;
@@ -16,7 +16,8 @@ export const NavBar = (props: { isDashboard?: boolean }) => {
           <div className="flex h-24 items-center justify-between">
             <Link
               href="/"
-              className={`text-3xl font-semibold text-gray-100 lg:text-5xl ${gluten.className}`}
+              className={`text-3xl font-semibold text-gray-100 lg:text-5xl gluten-font`}
+              style={{ fontSize:"30px" }}
             >
               SmartMint
             </Link>
